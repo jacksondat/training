@@ -4,6 +4,10 @@ console.log("Starting Express Server....");
 
 var express = require("express");
 var webserver = express();
+//Allows to connect with mongodb
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/tvify');
+
 //import the votes api module
 var votesAPI = require('./api/votes_api.js');
 

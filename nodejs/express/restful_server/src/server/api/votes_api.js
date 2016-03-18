@@ -5,23 +5,42 @@
 var express = require('express');
 var router = express.Router();
 
-var votes = {};
+var Vote = require('../model/Vote.js');
 
 //GET /votes
 router.get("/votes", function(request, response){
-	response.json(votes);
+	Vote.find({}, function( err, docs){
+		if(err){
+			return response.sendStatus(500).json(err);
+		}
+		response.json(docs);
+	});	
 });
 
 //POST /vote/<id>
 router.post("/vote/:id", function(request, response){
 	var id = request.params.id;
-	if(votes[id] === undefined){
-		votes[id] = 1;
-	}else{
-		votes[id] = votes[id] + 1;
-	}
-	
-	response.json({votes:votes[id]});
+	Vote.findOne({showId: id}, function(err, doc){
+		if(doc){
+			doc.count = doc.count + 1;
+			doc.save(function(err){
+				if(err){
+					return response.sendStatus(500).json(err);
+				}
+				response.json(doc);
+			});
+		}else{
+			var vote = new Vote();
+			vote.showId = id;
+			vote.count = 1;
+			vote.save(function(err){
+				if(err){
+					return response.sendStatus(500).json(err);
+				}
+				response.json(vote);
+			});
+		}
+	});
 });
 
 module.exports = router;
