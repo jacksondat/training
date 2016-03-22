@@ -1,2 +1,4 @@
 #to ignore the generated node modules
 node_modules/
+coverage/
+public/
