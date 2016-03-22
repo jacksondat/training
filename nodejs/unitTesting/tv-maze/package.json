@@ -1,0 +1,23 @@
+{
+  "name": "tv-maze",
+  "version": "1.0.0",
+  "description": "Wrapper for tv-maze shows",
+  "main": "index.js",
+  "scripts": {
+    "coverage": "istanbul cover node_modules/tape/bin/tape -- test/*-test.js",
+    "lint": "standard",
+    "test": "npm run lint && tape test/*-test.js | tap-spec"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "istanbul": "^0.4.2",
+    "nock": "^7.2.2",
+    "standard": "^6.0.8",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.5.1"
+  },
+  "dependencies": {
+    "client-request": "^1.0.1"
+  }
+}
