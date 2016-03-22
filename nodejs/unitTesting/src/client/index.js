@@ -15,29 +15,26 @@ page('/', function (ctx, next) {
 /**
  * Disabled localStorage
  */
-//  if (!localStorage.shows) {
+  if (!window.localStorage.shows) {
     getShows(function (shows) {
-      $tvShowsContainer.find('.loader').remove();
-      localStorage.shows = JSON.stringify(shows);
-      renderShows(shows);
+      $tvShowsContainer.find('.loader').remove()
+      window.localStorage.shows = JSON.stringify(shows)
+      renderShows(shows)
     })
-//  } else {
-//    renderShows(JSON.parse(localStorage.shows));
-//  }
+  } else {
+    renderShows(JSON.parse(window.localStorage.shows))
+  }
 })
 
 page('/search', function (ctx, next) {
   $tvShowsContainer.find('.tv-show').remove()
-  var $loader = $('<div class="loader">');
-  $loader.appendTo($tvShowsContainer);
+  var $loader = $('<div class="loader">')
+  $loader.appendTo($tvShowsContainer)
   const busqueda = qs.parse(ctx.querystring)
   searchShows(busqueda, function (res) {
-    $loader.remove();
-    var shows = res.map(function (el) {
-      return el.show;
-    })
+    $loader.remove()
 
-    renderShows(shows);
+    renderShows(res)
   })
 })
 
