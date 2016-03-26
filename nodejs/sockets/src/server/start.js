@@ -30,7 +30,7 @@ io.on('connection', function (socket) {
       if (err) {
         return socket.emit('vote:error', err)
       }
-      socket.emit('vote:done', vote)
+      io.sockets.emit('vote:done', vote)
     })
   })
 })
