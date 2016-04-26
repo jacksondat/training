@@ -1,0 +1,34 @@
+<div>
+  <div class="page-header">
+    <pokemon-name></pokemon-name>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <pokemon-image></pokemon-image>
+    </div>
+    <div class="col-md-6" ng-controller="TabsController">
+      <ul class="nav nav-tabs nav-justified">
+        <li ng-class="{ active : tab === 1}"><a ng-click="selectTab(1)">Pok&eacute;dex</a></li>
+        <li ng-class="{ active : tab === 2}"><a ng-click="selectTab(2)">Stats</a></li>
+        <li ng-class="{ active : tab === 3}"><a ng-click="selectTab(3)">Evolution</a></li>
+      </ul>
+      <div class="tab-content">
+        <!-- Pokedex -->
+        <div ng-show="tab === 1">
+          <pokemon-data></pokemon-data>
+        </div>
+        <!-- Stats -->
+        <div ng-show="tab === 2">
+          <pokemon-stats></pokemon-stats>
+        </div>
+        <!-- Evolution -->
+        <div ng-show="tab === 3">
+          <pokemon-evolution></pokemon-evolution>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- comments -->
+  <pokemon-comments name="{{pokemon.name | normalize}}"></pokemon-comments>
+  <!-- /comments -->
+</div>
