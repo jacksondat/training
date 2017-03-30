@@ -11,9 +11,16 @@
     <cxf-version>2.6.1</cxf-version>
     <spring-version>3.1.4.RELEASE</spring-version>
     <jetty-version>9.4.2.v20170220</jetty-version>
+    <camel-version>1.4.0</camel-version>
   </properties>
   
   <dependencies>
+    <dependency>
+	    <groupId>org.apache.camel</groupId>
+		  <artifactId>camel-core</artifactId>
+		  <version>${camel-version}</version>
+		</dependency>
+  
     <dependency>
 		  <groupId>org.apache.cxf</groupId>
 		  <artifactId>cxf-rt-core</artifactId>
