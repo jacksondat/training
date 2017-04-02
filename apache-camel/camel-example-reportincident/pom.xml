@@ -25,6 +25,11 @@
 	    <artifactId>camel-velocity</artifactId>
 	    <version>${camel-version}</version>
 	  </dependency>
+	  <dependency>
+	    <groupId>org.apache.camel</groupId>
+	    <artifactId>camel-mail</artifactId>
+	    <version>${camel-version}</version>
+    </dependency>
   
     <dependency>
 		  <groupId>org.apache.cxf</groupId>
@@ -61,6 +66,13 @@
 	   <version>${cxf-version}</version>
 	   <scope>test</scope>
 	 </dependency>
+	 <!-- unit testing mail using mock -->
+  <dependency>
+    <groupId>org.jvnet.mock-javamail</groupId>
+    <artifactId>mock-javamail</artifactId>
+    <version>1.7</version>
+    <scope>test</scope>
+  </dependency>
     
   </dependencies>
   <build>
